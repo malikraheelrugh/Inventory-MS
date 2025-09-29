@@ -1,0 +1,63 @@
+.mainDiv {}
+
+.addProductDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addProduct {
+    padding: 4px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: #fff;
+    padding: 45px;
+    border-radius: 8px;
+    width: 400px;
+
+    text-align: center;
+}
+
+.select {
+    display: flex;
+    gap: 10px;
+}
+
+.modal select {
+    width: 50%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding: 8px;
+
+}
+
+.filter {
+    margin-right: 10px;
+    background-color: rgb(240, 222, 199);
+    padding: 7px;
+    border-radius: 6px;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    margin: 15px 10;
+    margin-bottom: 10px;
+    border-radius: 4px;
+
+}

@@ -1,0 +1,45 @@
+{
+  "Products": [
+    {
+      "id": "63ee",
+      "name": "Erasmus Reynolds",
+      "category": "Clothing",
+      "supplier": "Hp Group",
+      "price": "221",
+      "stock": "85"
+    },
+    {
+      "id": "2d4a",
+      "name": "Eve Williamson",
+      "category": "Clothing",
+      "supplier": "B Group",
+      "price": "498",
+      "stock": "6"
+    },
+    {
+      "id": "b9c0",
+      "name": "Kelly Reeves",
+      "category": "Sports",
+      "supplier": "AGC",
+      "price": "503",
+      "stock": "5"
+    }
+  ],
+  "Categories": [
+    {
+      "id": "5d98",
+      "category": "Temporibus quia accu",
+      "discription": "Sunt est est magnam"
+    },
+    {
+      "id": "073f",
+      "category": "Rerum maiores beatae",
+      "discription": "Enim non recusandae"
+    },
+    {
+      "id": "8546",
+      "category": "food",
+      "discription": "all type of foods"
+    }
+  ]
+}

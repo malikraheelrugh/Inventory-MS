@@ -1,0 +1,13 @@
+.dashboardArrayDiv {
+    padding: 10px;
+    color: aliceblue;
+    border-radius: 8px;
+    width: 250px;
+    height: 150px;
+}
+
+.mainDiv {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}

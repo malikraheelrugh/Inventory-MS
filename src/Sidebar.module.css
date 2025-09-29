@@ -1,0 +1,28 @@
+.Sidebar {
+    width: 250px;
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh;
+}
+
+.SidebarHeading {
+    text-align: center;
+    padding: 20px;
+    font-family: "Manufacturing Consent", system-ui;
+}
+
+.sidebarList {
+    padding-left: 0;
+}
+
+.sidebarList li {
+    list-style: none;
+    padding: 10px 30px;
+}
+
+.sidebarList li span {
+    margin-left: 10px;
+}
+
+.active {
+    background-color: rgba(0, 0, 255, 0.718);
+}

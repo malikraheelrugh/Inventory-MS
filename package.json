@@ -1,26 +1,30 @@
+
 {
   "name": "react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "  \"npm run start:api\"",
-    "start:react": "react-scripts start",
+
+    "start:react": "vite",  
     "start:api": "json-server --watch db.json --port 3001"
   },
+
   "dependencies": {
     "bootstrap": "^5.3.8",
     "firebase": "^12.3.0",
-    "json-server": "^1.0.0-beta.3",
+    "json-server": "^0.17.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.9.2"
   },
+
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@types/react": "^19.1.13",

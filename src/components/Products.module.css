@@ -1,15 +1,19 @@
-.mainDiv {}
+.mainDiv h1 {}
+
+@media screen and (min-width:1100px) {}
 
 .addProductDiv {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 28px;
 }
 
 .addProduct {
     padding: 4px;
     border-radius: 10px;
     margin-right: 10px;
+    width: 100%;
 }
 
 .overlay {
@@ -29,8 +33,6 @@
     padding: 45px;
     border-radius: 8px;
     width: 400px;
-
-    text-align: center;
 }
 
 .select {

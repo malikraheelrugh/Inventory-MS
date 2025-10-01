@@ -7,7 +7,7 @@
 .SidebarHeading {
     text-align: center;
     padding: 20px;
-    font-family: "Manufacturing Consent", system-ui;
+    font-family: math;
 }
 
 .sidebarList {
@@ -17,6 +17,7 @@
 .sidebarList li {
     list-style: none;
     padding: 10px 30px;
+    cursor: pointer;
 }
 
 .sidebarList li span {

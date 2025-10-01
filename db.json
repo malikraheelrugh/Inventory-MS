@@ -23,23 +23,57 @@
       "supplier": "AGC",
       "price": "503",
       "stock": "5"
+    },
+    {
+      "id": "1e50",
+      "name": "Jermaine Compton",
+      "category": "food",
+      "supplier": "Hp Group",
+      "price": "211",
+      "stock": "77"
+    },
+    {
+      "id": "f9d0",
+      "name": "Hiroko Rhodes",
+      "category": "food",
+      "supplier": "Lee Henderson",
+      "price": "591",
+      "stock": "19"
     }
   ],
   "Categories": [
     {
-      "id": "5d98",
-      "category": "Temporibus quia accu",
-      "discription": "Sunt est est magnam"
+      "category": "Raheel Abbas malik",
+      "discription": "Sunt est est magnam",
+      "id": "5d98"
     },
     {
-      "id": "073f",
-      "category": "Rerum maiores beatae",
-      "discription": "Enim non recusandae"
+      "id": "0583",
+      "category": "Maxime ad voluptate ",
+      "discription": "Necessitatibus simil"
+    }
+  ],
+  "suppliers": [
+    {
+      "name": "Raheel Abbas",
+      "contact": "Earum maxime ea haru",
+      "address": "Voluptas temporibus ",
+      "email": "wyhidudode@mailinator.com",
+      "id": "6a8f"
     },
     {
-      "id": "8546",
-      "category": "food",
-      "discription": "all type of foods"
+      "id": "ee3d",
+      "name": "Lee Henderson",
+      "contact": "Tempore et consequu",
+      "address": "Sit qui nostrud vel",
+      "email": "kicecofama@mailinator.com"
+    },
+    {
+      "id": "bc40",
+      "name": "Lenore Daniel",
+      "contact": "Praesentium sit dolo",
+      "address": "Sed iste velit fugit",
+      "email": "seda@mailinator.com"
     }
   ]
 }

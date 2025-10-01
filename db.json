@@ -39,18 +39,21 @@
       "supplier": "Lee Henderson",
       "price": "591",
       "stock": "19"
+    },
+    {
+      "id": "c7db",
+      "name": "Noelle Gilmore",
+      "category": "Raheel Abbas",
+      "supplier": "Lee Henderson",
+      "price": "114",
+      "stock": "62"
     }
   ],
   "Categories": [
     {
-      "category": "Raheel Abbas malik",
-      "discription": "Sunt est est magnam",
-      "id": "5d98"
-    },
-    {
-      "id": "0583",
-      "category": "Maxime ad voluptate ",
-      "discription": "Necessitatibus simil"
+      "category": "Raheel Abbas",
+      "discription": "Sunt est est magnam dewd",
+      "id": "1941"
     }
   ],
   "suppliers": [
@@ -67,13 +70,6 @@
       "contact": "Tempore et consequu",
       "address": "Sit qui nostrud vel",
       "email": "kicecofama@mailinator.com"
-    },
-    {
-      "id": "bc40",
-      "name": "Lenore Daniel",
-      "contact": "Praesentium sit dolo",
-      "address": "Sed iste velit fugit",
-      "email": "seda@mailinator.com"
     }
   ]
 }

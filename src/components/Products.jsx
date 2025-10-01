@@ -105,7 +105,7 @@ const Products = ({ elementRef, isVisible }) => {
                                     <td>{product.supplier}</td>
                                     <td>{product.price}$</td>
                                     <td className={`badge rounded-pill ${Number(product.stock) < 10 ? "text-bg-warning" : "text-bg-primary"} ms-3`}>{product.stock}</td>
-                                    <td><button className='btn btn-warning'>Edit</button>
+                                    <td><button className='btn btn-warning' onClick={() => setshowModal(true)}>Edit</button>
                                         <button className='btn btn-danger ms-3' onClick={() => handleDelete(product.id)}>Delete</button>
                                     </td>
                                 </tr>

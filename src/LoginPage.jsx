@@ -1,5 +1,7 @@
 import React from 'react'
 import { auth } from './components/frebase';
+import { db } from './components/frebase';
+import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 const LoginPage = () => {
@@ -14,6 +16,21 @@ const LoginPage = () => {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log("Login successful:", user.email);
+        // Fetch additional user data from Firestore
+        const dataId = localStorage.getItem("docId")
+        if (dataId) {
+          const userDoc = await getDoc(doc(db, 'users', dataId));
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            localStorage.setItem("user", JSON.stringify({
+              firstname: userData.firstName,
+              lastname: userData.lastName,
+              email: userData.email,
+              address: userData.address,
+              createdAt: userData.createdAt && typeof userData.createdAt.toDate === 'function' ? userData.createdAt.toDate().toString() : (userData.createdAt || '')
+            }));
+          }
+        }
         // Redirect or show dashboard
         navigate("/admin-dashboard")
       } catch (error) {

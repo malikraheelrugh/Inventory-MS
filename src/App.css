@@ -39,6 +39,23 @@ tr td {
     font-family: monospace;
 }
 
+.profile-div {
+    margin-top: 30px;
+    background: antiquewhite;
+    padding: 40px;
+}
+
+.profile-div h4 {
+    font-family: monospace;
+
+}
+
+.closeSideBar {
+    float: right;
+    font-size: 35px;
+    cursor: pointer;
+}
+
 .login-label+input {
     padding: 5px 30px 5px 3px;
 }

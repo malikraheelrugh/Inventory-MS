@@ -16,29 +16,8 @@ const Categories = ({ elementRef, isVisible }) => {
         fetch(url)
             .then(res => res.json())
             .then(data => setCategories(data))
-    }, [category])
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const category = e.target.category.value;
-        const discription = e.target.discription.value;
-        const newCategory = { category, discription };
-
-        fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newCategory)
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setCategories((prev) => [...prev, data]); // update state with returned item
-            })
-            .catch((err) => console.error("Error:", err));
-
-        e.target.category.value = '';
-        e.target.discription.value = '';
-    };
+        setShowModal(false)
+    }, [])
     function handleEdit(id) {
         const idx = categories.findIndex(c => c.id === id)
         if (idx === -1) return
@@ -49,26 +28,24 @@ const Categories = ({ elementRef, isVisible }) => {
         })
         setEditIndex(id)
         setShowModal(true)
-        console.log("Edit category with id:", id);
     }
-
     async function handleUpdate(e) {
         if (editIndex === -1) {
-            e.preventDefault()
-            // return;
-            // console.log(e.target);
+            if (e && e.preventDefault) e.preventDefault()
             try {
-                fetch(url, {
+                const res = await fetch(url, {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newCategory)
-
-                }).then(res => res.json())
-                    .then(console.log)
+                })
+                const created = await res.json()
+                // append the newly created item so UI updates immediately
+                setCategories(prev => [...prev, created])
+                setFormData({ category: '', discription: '' })
+                setShowModal(false)
                 return;
             } catch (error) {
                 console.log(error);
-
             }
         }
         try {
@@ -109,7 +86,7 @@ const Categories = ({ elementRef, isVisible }) => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="mx-3 rounded-2"
                         placeholder='search products by name' />
-                    <button className='btn btn-primary ' id='btn' style={{ float: "right" }} onClick={() => setShowModal(true)} >Add Product</button>
+                    <button className='btn btn-primary ' id='btn' style={{ float: "right" }} onClick={() => { setEditIndex(-1); setFormData({ category: '', discription: '' }); setShowModal(true); }} >Add Product</button>
 
                 </div>
 
@@ -117,18 +94,6 @@ const Categories = ({ elementRef, isVisible }) => {
                     style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.8s ease-in-out', width: "100%" }}
 
                 >
-                    {/* <div>
-                        <form className="input-div d-flex flex-column m-3 bg-light p-3 rounded" onSubmit={handleSubmit}>
-                            <label htmlFor="category" className='fw-bold'>Enter a category</label>
-                            <input type="text" id="category" name="category" placeholder='category' className='rounded-1' />
-                            <label htmlFor="discription" className='fw-bold'>Add Discription</label>
-                            <input type="text" id="discription" placeholder='Discription' name="discription" className='rounded-1' />
-                            <div className='d-flex gap-3 justify-content-end mt-3'>
-                                <button type='button' className='btn btn-warning col-4'>cacel</button>
-                                <button type='submit' className='btn btn-success col-4'>Add </button>
-                            </div>
-                        </form>
-                    </div> */}
                     <div className=' bg-light rounded output-div'>
                         <h2 className='mx-3' style={{ fontFamily: "system-ui" }}>Categories List</h2>
 
@@ -142,7 +107,7 @@ const Categories = ({ elementRef, isVisible }) => {
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider">
-                                {categories.map((cat, index) => {
+                                {categories.filter(item => item.category.toLowerCase().includes(searchTerm.toLowerCase())).map((cat, index) => {
                                     return <tr key={cat.id ?? index}>
                                         <th scope="row">{index + 1}</th>
                                         <td>{cat.category}</td>

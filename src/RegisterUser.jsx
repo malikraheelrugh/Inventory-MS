@@ -7,9 +7,14 @@ const RegisterUser = () => {
     const [transition, startTransition] = React.useTransition()
     const naavigate = useNavigate()
     function handleSubmit(event) {
+        const firstname = event.target[0].value
+        const lastname = event.target[1].value
+        const email = event.target[2].value
+        const address = event.target[5].value
+        const createdAt = new Date()
+        localStorage.setItem("user", JSON.stringify({ firstname, lastname, email, createdAt, address }));
         startTransition(async () => {
             event.preventDefault();
-            console.log(db)
             if (event.target[3].value !== event.target[4].value) {
                 alert("Passwords do not match!");
                 return;
@@ -18,13 +23,16 @@ const RegisterUser = () => {
                 const userCredential = await createUserWithEmailAndPassword(auth, event.target[2].value, event.target[3].value);
                 const user = userCredential.user;
                 console.log("User created:", user.uid);
-                await addDoc(collection(db, "users"), {
+                const dataId = await addDoc(collection(db, "users"), {
                     uid: user.uid,
-                    firstName: event.target[0].value,
-                    lastName: event.target[1].value,
-                    email: event.target[2].value,
+                    firstName: firstname,
+                    lastName: lastname,
+                    email: email,
+                    address: address,
                     createdAt: new Date()
                 });
+                localStorage.setItem("docId", dataId.id);
+                console.log("Document written with ID: ", dataId.id);
                 naavigate("/admin-dashboard")
                 console.log("Supplier added!");
             } catch (error) {
@@ -74,6 +82,13 @@ const RegisterUser = () => {
                 <div className="col">
                     <label htmlFor="validationCustom04" className="form-label">confirm password</label>
                     <input type="password" className="form-control" id="validationCustom03" required />
+                    <div className="invalid-feedback">
+                        Please provide a valid password.
+                    </div>
+                </div>
+                <div className="col">
+                    <label htmlFor="validationCustom04" className="form-label">Address</label>
+                    <input type="address" className="form-control" id="validationCustom03" required />
                     <div className="invalid-feedback">
                         Please provide a valid password.
                     </div>

@@ -8,18 +8,22 @@ import Orders from "./components/Orders";
 import Suppliers from "./components/Suppliers";
 import Users from "./components/Users";
 import Profile from "./components/Profile";
+import Logout from "./components/Logout";
 //react icons
+import { BiMenu } from "react-icons/bi";
 import { FaHome } from 'react-icons/fa';
 import { AiOutlineProduct } from 'react-icons/ai';
 import { BiSolidCategoryAlt } from 'react-icons/bi';
 import { FaCartPlus } from 'react-icons/fa';
 import { FaTruck } from 'react-icons/fa';
 import { FaUsers } from 'react-icons/fa';
-import { LuSettings } from 'react-icons/lu';
+import { CgClose } from "react-icons/cg";
+import { CgProfile } from 'react-icons/cg';
 import { AiOutlineLogout } from 'react-icons/ai';
 function Sidebar() {
-    const [activeTab, setActiveTab] = useState("Products");
+    const [activeTab, setActiveTab] = useState("Profile");
     const [isVisible, setIsVisible] = useState(false);
+    const [closeSidebar, setCloseSidebar] = useState(true);
     const elementRef = useRef(null)
     const handleTabChange = (tab) => {
         // ensure new tab starts hidden so the 2s delay can run before showing
@@ -27,11 +31,10 @@ function Sidebar() {
         setActiveTab(tab)
     }
     useEffect(() => {
-        if (activeTab !== "Dashboard" && activeTab !== "Products" && activeTab != "Categories" && activeTab !== "Suppliers") {
+        if (activeTab !== "Dashboard" && activeTab !== "Products" && activeTab != "Categories" && activeTab !== "Suppliers" && activeTab !== "Profile") {
             setIsVisible(false)
             return;
         }
-
 
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -57,59 +60,63 @@ function Sidebar() {
             }
         };
     }, [activeTab])
+    function handleClosesidebar() {
+        setCloseSidebar(!closeSidebar)
+    }
     return (
         <>
             <div className="root-div d-flex" style={{ background: "#f8f9fa" }}>
-                <div className={`${styles.Sidebar} text-bg-dark`}>
-                    <h1 className={styles.SidebarHeading}>Inventory MS</h1>
-                    <ul className={styles.sidebarList}>
+                <div className={`${styles.Sidebar} text-bg-dark`} style={{ width: closeSidebar === true ? "70px" : "250px", transition: "width 0.3s" }}>
+                    {closeSidebar == true ? <BiMenu className="closeSideBar" onClick={handleClosesidebar} /> : <CgClose onClick={handleClosesidebar} className="closeSideBar" />}
+                    <h1 className={styles.SidebarHeading}>{closeSidebar === false ? "Inventory MS" : ""}</h1>
+                    <ul className={`${styles.sidebarList}`}>
                         <li
                             onClick={() => { handleTabChange("Dashboard"); }}
                             className={activeTab === "Dashboard" ? styles.active : ""}
                         >
-                            <FaHome />  <span>Dashboard</span>
+                            <FaHome /> {closeSidebar === false && <span>Dashboard</span>}
                         </li>
                         <li
                             onClick={() => handleTabChange("Products")}
                             className={activeTab === "Products" ? styles.active : ""}
                         >
-                            <AiOutlineProduct /><span>Products</span>
+                            <AiOutlineProduct />{closeSidebar === false && <span>Products</span>}
                         </li>
                         <li
                             onClick={() => handleTabChange("Categories")}
                             className={activeTab === "Categories" ? styles.active : ""}
                         >
-                            <BiSolidCategoryAlt /> <span>Categories</span>
+                            <BiSolidCategoryAlt /> {closeSidebar === false && <span>Categories</span>}
                         </li>
                         <li
                             onClick={() => setActiveTab("Orders")}
                             className={activeTab === "Orders" ? styles.active : ""}
                         >
-                            <FaCartPlus /><span>Orders</span>
+                            <FaCartPlus /> {closeSidebar === false && <span>Orders</span>}
                         </li>
                         <li
                             onClick={() => handleTabChange("Suppliers")}
                             className={activeTab === "Suppliers" ? styles.active : ""}
                         >
-                            <FaTruck />  <span>Suppliers</span>
+                            <FaTruck /> {closeSidebar === false && <span>Suppliers</span>}
                         </li>
                         <li
                             onClick={() => setActiveTab("Users")}
                             className={activeTab === "Users" ? styles.active : ""}
                         >
-                            <FaUsers /> <span>Users</span>
+                            <FaUsers /> {closeSidebar === false && <span>Users</span>}
                         </li>
                         <li
-                            onClick={() => setActiveTab("Profile")}
+                            onClick={() => handleTabChange("Profile")}
                             className={activeTab === "Profile" ? styles.active : ""}
                         >
-                            <LuSettings /> <span>Profile</span>
+                            <CgProfile /> {closeSidebar === false && <span>Profile</span>}
                         </li>
                         <li
                             onClick={() => setActiveTab("Logout")}
                             className={activeTab === "Logout" ? styles.active : ""}
                         >
-                            <AiOutlineLogout /><span>Logout</span>
+                            <AiOutlineLogout /> {closeSidebar === false && <span>Logout</span>}
                         </li>
                     </ul>
                 </div>
@@ -120,7 +127,8 @@ function Sidebar() {
                     {activeTab == "Orders" && <Orders />}
                     {activeTab == "Suppliers" && <Suppliers elementRef={elementRef} isVisible={isVisible} />}
                     {activeTab == "Users" && <Users />}
-                    {activeTab == "Profile" && <Profile />}
+                    {activeTab == "Profile" && <Profile elementRef={elementRef} isVisible={isVisible} />}
+                    {activeTab == "Logout" && <Logout elementRef={elementRef} isVisible={isVisible} />}
                 </main>
             </div>
 
